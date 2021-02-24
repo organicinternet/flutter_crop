@@ -286,11 +286,13 @@ class _CropState extends State<Crop> with TickerProviderStateMixin {
     final gd = GestureDetector(
       onScaleStart: (details) {
         _previousOffset = details.focalPoint;
-        _previousScale = max(widget.controller._scale, 1);
+        _previousScale =
+            widget.controller._scale; //max(widget.controller._scale, 1);
       },
       onScaleUpdate: _onScaleUpdate,
       onScaleEnd: (details) {
-        widget.controller._scale = max(widget.controller._scale, 1);
+        widget.controller._scale =
+            widget.controller._scale; // max(widget.controller._scale, 1);
         _reCenterImage();
       },
     );
@@ -345,9 +347,9 @@ class CropController extends ChangeNotifier {
     notifyListeners();
   }
 
-  double get scale => max(_scale, 1);
+  double get scale => _scale; //max(_scale, 1);
   set scale(double value) {
-    _scale = max(value, 1);
+    _scale = value; // max(value, 1);
     notifyListeners();
   }
 
