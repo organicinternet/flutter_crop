@@ -102,6 +102,7 @@ class _CropState extends State<Crop> with TickerProviderStateMixin {
   }
 
   void _reCenterImage() {
+    return;
     //final totalSize = _parent.currentContext.size;
 
     final sz = _key.currentContext.size;
@@ -156,6 +157,7 @@ class _CropState extends State<Crop> with TickerProviderStateMixin {
   }
 
   void _reCenterImageNoAnimation() {
+    return;
     final sz = _key.currentContext.size;
     final s = widget.controller._scale * widget.controller._getMinScale();
     final w = sz.width;
@@ -224,7 +226,7 @@ class _CropState extends State<Crop> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final r = widget.controller._rotation / 180.0 * pi;
-    final s = widget.controller._scale * widget.controller._getMinScale();
+    final s = widget.controller._scale; // * widget.controller._getMinScale();
     final o = Offset.lerp(_startOffset, _endOffset, _animation.value);
 
     Widget _buildInnerCanvas() {
@@ -377,6 +379,7 @@ class CropController extends ChangeNotifier {
   }
 
   double _getMinScale() {
+    return 0.01;
     final r = (_rotation % 360) / 180.0 * pi;
     final rabs = r.abs();
 
